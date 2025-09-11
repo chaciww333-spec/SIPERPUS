@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('pustakawan', function (Blueprint $table) {
             $table->id();
+            $table->string('Nama', 64)->unique();
+            $table->string('Alamat', 255)->nullable();
+            $table->string('Telepon', 32);
+            $table->string('Jabatan', 32);
             $table->timestamps();
         });
     }

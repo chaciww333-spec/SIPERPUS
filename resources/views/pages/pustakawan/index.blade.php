@@ -1,35 +1,42 @@
 @extends('layouts.app')
-@section('title', 'halaman admin')
+@section('title', 'halaman pustakawan')
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h3 class="title page">Halaman Admin</h3>
-            <a href="{{ route('admin.create') }}" class="btn btn-primary mb-3"><span class="ti ti-plus me-1"></span>Tambah</a>
+            <h3 class="title page">Halaman Pustakawan</h3>
+            <a href="{{ route('pustakawan.create') }}" class="btn btn-primary mb-3"><span
+                    class="ti ti-plus me-1"></span>Tambah</a>
             <div class="card card-body">
                 <table class="table table-striped dataTable">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Telepon</th>
+                            <th scope="col">Jabatan</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($admins as $admin)
+                        @foreach ($pustakawan as $item)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $admin->name }}</td>
-                                <td>{{ $admin->email }}</td>
+                                <td>{{ $item->Nama }}</td>
+                                <td>{{ $item->Alamat }}</td>
+                                <td>{{ $item->Telepon }}</td>
+                                <td>{{ $item->Jabatan }}</td>
                                 <td>
-                                    <a href="{{ route('admin.show', $admin->id) }}" class="btn btn-sm btn-secondary">
+                                    <a href="{{ route('pustakawan.show', $pustakawan->id) }}"
+                                        class="btn btn-sm btn-secondary">
                                         <span class="ti ti-eye"></span>
                                     </a>
-                                    <a href="{{ route('admin.edit', $admin->id) }}" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('pustakawan.edit', $pustakawan->id) }}"
+                                        class="btn btn-sm btn-primary">
                                         <span class="ti ti-pencil"></span>
                                     </a>
                                     <a href="javascript:;" class="btn btn-sm btn-danger"
-                                        onclick="actionDelete('{{ route('admin.destroy', $admin->id) }}')">
+                                        onclick="actionDelete('{{ route('pustakawan.destroy', $pustakawan->id) }}')">
                                         <span class="ti ti-trash"></span>
                                     </a>
                                 </td>
@@ -79,15 +86,15 @@
         });
     </script>
 
-    @if(Session::has('success'))
-    <script type="text/javascript">
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: '{{ Session::get('success') }}',
-            showConfirmButton: false,
-            timer: 1000
-        });
-    </script>
-    @endif
+    @if (Session::has('success'))
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: '{{ Session::get('success') }}',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        </script>
+    @endif
 @endpush

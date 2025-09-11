@@ -21,7 +21,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.create');
     }
 
     /**
@@ -29,7 +29,18 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -37,7 +48,8 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $admin = User::find($id);
+        return view('pages.admin.show', compact('admin'));
     }
 
     /**
@@ -45,7 +57,8 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         $admin = User::find($id);
+        return view('pages.admin.edit', compact('admin'));
     }
 
     /**
@@ -53,7 +66,22 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email'=> 'required|email|unique:users,email,' .$id,
+            'password' => 'nullable|min:8|confirmed'
+        ]);
+        $admin = User::findOrFail($id);
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        
+        
+        if ($request->filled('password')) {
+        $admin->password = bcrypt($request->password);
+        }
+
+        $admin->save();  
+        return redirect()->route('admin.index')->with('success', 'Data admin berhasil diubah');
     }
 
     /**
@@ -61,6 +89,8 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       $admin = User::findOrFail($id);
+        $admin->delete();
+        return redirect()->route('admin.index')->with('success', 'Data admin berhasil dihapus');
     }
 }
