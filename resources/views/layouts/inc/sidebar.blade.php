@@ -40,7 +40,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="" class="menu-link">
+            <a href="{{ route('pustakawan.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-apps-off"></i>
                 Pustakawan
             </a>
@@ -58,7 +58,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="" class="menu-link">
+            <a href="{{ route('kategori.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-clipboard"></i>
                 Kategori
             </a>

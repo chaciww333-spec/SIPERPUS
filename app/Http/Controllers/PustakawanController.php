@@ -11,7 +11,7 @@ class PustakawanController extends Controller
      */
     public function index()
     {
-         $pustakawan = User::orderby('Nama',)->get();
+         $pustakawan = Pustakawan::orderBy('Nama')->get();
         return view('pages.pustakawan.index', compact('pustakawan'));
     }
 
@@ -20,7 +20,7 @@ class PustakawanController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.pustakawan.create');
     }
 
     /**
@@ -28,7 +28,20 @@ class PustakawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+            'Nama' => 'required',
+            'Alamat' => 'required',
+            'Telepon' => 'required',
+            'Jabatan' => 'required',
+        ]);
+
+        Pustakawan::create([
+            'Nama' => $request->Nama,
+            'Alamat' => $request->Alamat,
+            'Telepon' => $request->Telepon,
+            'Jabatan' => $request->Jabatan,
+        ]);
+        return redirect()->route('pustakawan.index');
     }
 
     /**
@@ -36,7 +49,8 @@ class PustakawanController extends Controller
      */
     public function show(string $id)
     {
-        //
+         $pustakawan = Pustakawan::find($id);
+        return view('pages.pustakawan.show', compact('pustakawan'));
     }
 
     /**
@@ -44,7 +58,9 @@ class PustakawanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
+         $pustakawan = Pustakawan::findOrFail($id);
+        return view('pages.pustakawan.edit', compact('pustakawan'));
     }
 
     /**
@@ -52,7 +68,16 @@ class PustakawanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'Nama' => 'required',
+            'Alamat' => 'required',
+            'Telepon' => 'required',
+            'Jabatan' => 'required',
+        ]);
+
+        $pustakawan = Pustakawan::findOrFail($id);
+        $pustakawan->update($request->all());
+        return redirect()->route('pustakawan.index')->with('success', 'Data pustakawan berhasil diubah');
     }
 
     /**
@@ -60,6 +85,8 @@ class PustakawanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pustakawan = Pustakawan::findOrFail($id);
+        $pustakawan->delete();
+        return redirect()->route('pustakawan.index')->with('success', 'Data pustakawan berhasil dihapus');
     }
 }

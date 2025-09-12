@@ -44,6 +44,27 @@
     <script src="{{ asset('/js/config.js') }}"></script>
 
     @stack('styles')
+
+    <style>
+        body {
+            background-color: #E6E6FA;
+            color: #000000;
+        }
+
+        .navbar {
+            background-color: #F0F8FF !important;
+        }
+
+        .sidebar,
+        .layout-menu {
+            background-color: #E6E6FA !important;
+        }
+
+        a,
+        .nav-link {
+            color: #000000 !important;
+        }
+    </style>
 </head>
 
 <body>
