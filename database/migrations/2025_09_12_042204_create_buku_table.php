@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('cover', 255)->nullable();
             $table->string('judul', 255);
-            $table->integer('kategori_id')->unique();
+            $table->integer('kategori_id');
             $table->string('penulis', 64);
             $table->string('penerbit', 128);
             $table->timestamps();

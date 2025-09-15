@@ -32,12 +32,12 @@ class KategoriController extends Controller
     {
             $request->validate([
             'nama' => 'required',
-            'slug' => 'required',
+            'deskripsi' => 'required',
         ]);
 
         Kategori::create([
             'nama' => $request->nama,
-            'slug' => $request->slug,
+            'deskripsi' => $request->deskripsi,
         ]);
         return redirect()->route('kategori.index');
 
@@ -68,7 +68,7 @@ class KategoriController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'slug' => 'required',
+            'deskripsi' => 'required',
         ]);
 
         $kategori = Kategori::findOrFail($id);

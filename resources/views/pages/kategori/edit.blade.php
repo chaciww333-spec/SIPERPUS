@@ -22,10 +22,10 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <label for="slug" class="form-label">Slug</label>
-                            <input type="slug" class="form-control @error('Alamat') is-invalid @enderror" id="slug"
-                                name="slug" value="{{ old('slug') ?? $kategori->slug }}" />
-                            @error('slug')
+                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <input type="deskripsi" class="form-control @error('Deskripsi') is-invalid @enderror" id="deskripsi"
+                                name="deskripsi" value="{{ old('deskripsi') ?? $kategori->slug }}" />
+                            @error('deskripsi')
                                 <div class="invalid-feedback d-block">
                                     {{ $message }}
                                 </div>

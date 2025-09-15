@@ -15,5 +15,6 @@ Route::group([
     Route::resource('/admin', App\Http\Controllers\AdminController::class);
     Route::resource('/pustakawan', App\Http\Controllers\PustakawanController::class);
     Route::resource('/kategori', App\Http\Controllers\KategoriController::class);
+    Route::resource('/buku', App\Http\Controllers\BukuController::class);
     
 });

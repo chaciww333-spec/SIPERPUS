@@ -47,17 +47,17 @@
 
     <style>
         body {
-            background-color: #E6E6FA;
+            background-color: #FBC5C5;
             color: #000000;
         }
 
         .navbar {
-            background-color: #F0F8FF !important;
+            background-color: #FFE1E1 !important;
         }
 
         .sidebar,
         .layout-menu {
-            background-color: #E6E6FA !important;
+            background-color: #FBC5C5 !important;
         }
 
         a,

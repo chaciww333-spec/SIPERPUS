@@ -16,9 +16,9 @@
                         <td>{{ $kategori->nama }}</td>
                     </tr>
                     <tr>
-                        <th width="25%">Slug</th>
+                        <th width="25%">Deskripsi</th>
                         <td width="10px">:</td>
-                        <td>{{ $kategori->slug }}</td>
+                        <td>{{ $kategori->deskripsiphp }}</td>
                     </tr>
                     <tr>
                         <th width="25%">Terdaftar Pada</th>
