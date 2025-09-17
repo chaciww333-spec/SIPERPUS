@@ -45,6 +45,13 @@
     <script src="{{ asset('/vendor/js/template-customizer.js') }}"></script>
 
     <script src="{{ asset('/js/config.js') }}"></script>
+
+    <style>
+         body {
+            background-color: #FBC5C5;
+            color: #000000;
+        }
+    </style>
 </head>
 
 <body>
