@@ -13,7 +13,9 @@
                     <tr>
                         <th width="25%">Cover</th>
                         <td width="10px">:</td>
-                        <td>{{ $buku->cover }}</td>
+                        <td colspan="2">
+                            <img src="{{ asset('storage/images/' . $buku->cover) }}" alt="{{ $buku->nama }}" width=100>
+                        </td>
                     </tr>
                     <tr>
                         <th width="25%">Judul</th>
@@ -35,7 +37,7 @@
                         <td width="10px">:</td>
                         <td>{{ $buku->penerbit }}</td>
                     </tr>
-                   
+
                     <tr>
                         <th width="25%">Terdaftar Pada</th>
                         <th width="10px">:</th>

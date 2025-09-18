@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Kategori;
+use Illuminate\Database\Eloquent\Relation\BelongsTo;
 
 class Buku extends Model
 {
@@ -18,7 +20,7 @@ class Buku extends Model
 
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class, 'kategori_id');
+        return $this->belongsTo(Kategori::class, 'kategori_id', 'id');
     }
 }
 

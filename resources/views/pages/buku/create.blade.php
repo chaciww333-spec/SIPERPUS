@@ -29,7 +29,7 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <label for="kategori_id" class="form-label">Kategori ID</label>
+                            <label for="kategori_id" class="form-label">Kategori</label>
                             <select name="kategori_id" id="kategori_id" class="form-select">
                                 <option value="">Pilih Kategori</option>
                                 @foreach ($kategori as $k)

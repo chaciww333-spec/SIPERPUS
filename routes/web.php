@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-
+Route::get('/anggota', [App\Http\Controllers\FormAnggotaController::class, 'index'])->name('anggota.index');
+Route::get('/anggota/create', [App\Http\Controllers\FormAnggotaController::class, 'create'])->name('anggota.create');
+Route::post('/anggota/store', [App\Http\Controllers\FormAnggotaController::class, 'store'])->name('anggota.store');
 
 Auth::routes();
 

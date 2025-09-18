@@ -12,35 +12,35 @@
                             <th scope="col">No</th>
                             <th scope="col">Cover</th>
                             <th scope="col">Judul</th>
-                            <th scope="col">Kategori ID</th>
+                            <th scope="col">Kategori</th>
                             <th scope="col">Penulis</th>
                             <th scope="col">Penerbit</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($buku as $item)
+                        @foreach ($buku as $buku)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>
                                     
-                                        <img src="{{ asset('storage/images/' . $item->cover) }}" alt="{{ $item->nama }}"
-                                            width=80>
+                                        <img src="{{ asset('storage/images/' . $buku->cover) }}" alt="{{ $buku->nama }}"
+                                            width=100>
                                     
                                 </td>
-                                <td>{{ $item->judul }}</td>
-                                <td>{{ $item->kategori_id }}</td>
-                                <td>{{ $item->penulis }}</td>
-                                <td>{{ $item->penerbit }}</td>
+                                <td>{{ $buku->judul }}</td>
+                                <td>{{ $buku->kategori->nama }}</td>
+                                <td>{{ $buku->penulis }}</td>
+                                <td>{{ $buku->penerbit }}</td>
                                 <td>
-                                    <a href="{{ route('buku.show', $item->id) }}" class="btn btn-sm btn-secondary">
+                                    <a href="{{ route('buku.show', $buku->id) }}" class="btn btn-sm btn-secondary">
                                         <span class="ti ti-eye"></span>
                                     </a>
-                                    <a href="{{ route('buku.edit', $item->id) }}" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('buku.edit', $buku->id) }}" class="btn btn-sm btn-primary">
                                         <span class="ti ti-pencil"></span>
                                     </a>
                                     <a href="javascript:;" class="btn btn-sm btn-danger"
-                                        onclick="actionDelete('{{ route('buku.destroy', $item->id) }}')">
+                                        onclick="actionDelete('{{ route('buku.destroy', $buku->id) }}')">
                                         <span class="ti ti-trash"></span>
                                     </a>
                                 </td>

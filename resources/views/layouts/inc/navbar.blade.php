@@ -25,7 +25,7 @@
                      data-bs-toggle="dropdown">
                      <div class="d-flex align-items-center">
                          <img src="{{ asset('/img/avatars/8.png') }}" alt class="rounded-circle" width="32" height="32" />
-                          <span>{{ Auth::user()->name }}</span>
+                          <span>{{ Auth::user()->name ?? 'Anggota'}}</span>
                      </div>
 
                  </a>
