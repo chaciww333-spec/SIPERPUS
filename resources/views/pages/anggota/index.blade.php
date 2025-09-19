@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('title', 'Daftar Anggota')
 @section('content')
+
     <div class="row">
         <div class="col-md-12">
             <h3 class="title page">Daftar Anggota</h3>
             <a href="{{ route('anggota.create') }}" class="btn btn-primary mb-3"><span class="ti ti-plus me-1"></span>Tambah</a>
             <div class="card card-body">
-                <table class="table table-striped dataTable">
+                <table class="table table-striped dataTable" style="background-color:FFE1E1 ">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -31,6 +32,7 @@
                             </tr>
                         @endforeach
                     </tbody>
+                
                 </table>
             </div>
         </div>
@@ -47,3 +49,4 @@
         });
     </script>
     @endif
+@endsection
