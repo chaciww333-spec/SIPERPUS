@@ -20,16 +20,6 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <input type="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
-                                name="deskripsi" value="{{ old('deskripsi') }}" />
-                            @error('deskripsi')
-                                <div class="invalid-feedback d-block">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
 
                         <div class="flex">
                             <button type="submit" class="btn btn-primary">

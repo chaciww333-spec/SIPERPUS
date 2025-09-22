@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title', 'halaman kategori')
 @section('content')
-    <div class="row">
         <div class="col-md-12">
             <h3 class="title page">Halaman Kategori</h3>
             <a href="{{ route('kategori.create') }}" class="btn btn-primary mb-3"><span
@@ -12,7 +11,6 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Deskripsi</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -21,7 +19,6 @@
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $item->nama }}</td>
-                                <td>{{ $item->deskripsi }}</td>
                                 <td>
                                     <a href="{{ route('kategori.show', $item->id) }}" class="btn btn-sm btn-secondary">
                                         <span class="ti ti-eye"></span>
@@ -40,7 +37,7 @@
                 </table>
             </div>
         </div>
-    </div>
+   
 
     <form id="form-delete" action="" method="POST" class="d-none">
         @csrf

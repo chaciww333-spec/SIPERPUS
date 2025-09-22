@@ -32,7 +32,6 @@ class KategoriController extends Controller
     {
             $request->validate([
             'nama' => 'required',
-            'deskripsi' => 'required',
         ]);
 
         Kategori::create([
@@ -68,7 +67,6 @@ class KategoriController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'deskripsi' => 'required',
         ]);
 
         $kategori = Kategori::findOrFail($id);

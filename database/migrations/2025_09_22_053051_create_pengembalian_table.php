@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kategori', function (Blueprint $table) {
+        Schema::create('pengembalian', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 64);
+            $table->unsignedBigInteger('peminjaman_id');
+            $table->date('tgl_pengembalian');
+            $table->integer('denda')->default(0);
             $table->timestamps();
+
+            $table->foreign('peminjaman_id')->references('id')->on('peminjaman');
         });
     }
 
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategori');
+        Schema::dropIfExists('pengembalian');
     }
 };

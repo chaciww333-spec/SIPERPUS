@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class FormAnggotaController extends Controller
 {
+    public function kartu($id)
+    {
+        $anggota = Anggota::findOrFail($id);
+        return view('pages.anggota.kartu', compact('anggota'));
+    }
     public function index()
     {
         $anggota = Anggota::all();

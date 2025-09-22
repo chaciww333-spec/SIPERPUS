@@ -10,7 +10,6 @@ class Kategori extends Model
 
     protected $fillable = [
         'nama',
-        'deskripsi',
     ];
 
     public function buku()

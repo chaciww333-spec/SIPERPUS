@@ -16,4 +16,9 @@ class Anggota extends Model
         'nomor_telepon',
         'tanggal_bergabung',
     ];
+
+     public function peminjaman()
+    {
+        return $this->hasMany(Peminjaman::class, 'peminjaman', 'id');
+    }
 }

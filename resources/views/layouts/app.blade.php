@@ -64,6 +64,16 @@
         .nav-link {
             color: #000000 !important;
         }
+
+        .content-wrapper{
+            max-width:900px;
+        }
+
+        .card {
+            background-color: #FFE1E1;
+            color:#000000
+            width: 100%
+        }
     </style>
 </head>
 

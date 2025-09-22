@@ -16,11 +16,6 @@
                         <td>{{ $kategori->nama }}</td>
                     </tr>
                     <tr>
-                        <th width="25%">Deskripsi</th>
-                        <td width="10px">:</td>
-                        <td>{{ $kategori->deskripsiphp }}</td>
-                    </tr>
-                    <tr>
                         <th width="25%">Terdaftar Pada</th>
                         <th width="10px">:</th>
                         <th>{{ $kategori->created_at->isoformat('d M Y H:i') }}</th>

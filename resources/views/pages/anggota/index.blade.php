@@ -17,6 +17,7 @@
                             <th scope="col">Jenis Kelamin</th>
                             <th scope="col">Nomor Telepon</th>
                             <th scope="col">Tanggal Bergabung</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +30,9 @@
                                 <td>{{ $anggota->jenis_kelamin }}</td>
                                 <td>{{ $anggota->nomor_telepon }}</td>
                                 <td>{{ $anggota->tanggal_bergabung }}</td>
+                                <td>
+                        <a href="{{ route('anggota.kartu', $anggota->id) }}" >Lihat Kartu</a>
+                    </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -50,3 +54,5 @@
     </script>
     @endif
 @endsection
+
+
