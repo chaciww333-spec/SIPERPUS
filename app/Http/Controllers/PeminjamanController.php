@@ -22,7 +22,9 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        return view('pages.peminjaman.create');
+        $anggota = Anggota::all();
+        $buku = Buku::all();
+        return view('pages.peminjaman.create', compact('anggota', 'buku'));
     }
 
     /**
@@ -43,7 +45,13 @@ class PeminjamanController extends Controller
             'tgl_jatuh_tempo' => now()->addDays(7),
             'status' => 'Dipinjam',
          ]);
-         return redirect()->route('peminjam.index')->with('succes', 'Buku berhasil dipinjam');
+         return redirect()->route('peminjaman.index')->with('succes', 'Buku berhasil dipinjam');
+    }
+     public function destroy(string $id)
+    {
+        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman->delete();
+        return redirect()->route('peminjaman.index')->with('success', 'Data kategori berhasil dihapus');
     }
 
 }

@@ -71,8 +71,9 @@
 
         .card {
             background-color: #FFE1E1;
-            color:#000000
-            width: 100%
+            color:#000000;
+            width: 100%;
+
         }
     </style>
 </head>

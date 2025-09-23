@@ -12,7 +12,7 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-       $pengembalian = Pengembalian::with('peminjaman')->get();
+       $pengembalian = Pengembalian::with('peminjaman.anggota', 'peminjaman.buku')->get();
        return view('pages.pengembalian.index', compact('pengembalian'));
     }
 
@@ -21,8 +21,8 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        $peminjaman = Peminjaman::findOrFail($peminjaman_id);
-        return view('pages.pengembalian.create', compact('pengembalian'));
+        $peminjaman = Peminjaman::whereDoesntHave('pengembalian')->with('anggota', 'buku')->get();
+        return view('pages.pengembalian.create', compact('peminjaman'));
     }
 
     /**
@@ -31,14 +31,15 @@ class PengembalianController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'peminjaman_id' => 'required|exists:peminjaman,id',
+            'peminjaman_id' => 'required',
+            'tgl_pengembalian' => 'required|date',
         ]);
-        $pengembalian = pengembalian::create([
+        Pengembalian::create([
             'peminjaman_id' => $request->peminjaman_id,
-            'tgl_pengembalian' => now(),
+            'tgl_pengembalian' => $request->tgl_pengembalian,
             'denda' => $request->denda ?? 0,
         ]);
-         $pengembalian->peminjaman->update([
+         Peminjaman::where('id', $request->peminjaman_id)->update([
             'status' => 'Dikembalikan'
          ]);
          return redirect()->route('pengembalian.index')->with('success', 'Buku berhasil dikembalikan');
