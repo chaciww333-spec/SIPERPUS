@@ -32,7 +32,7 @@
                                 <td>{{ $anggota->tanggal_bergabung }}</td>
                                 <td>
                         <a href="{{ route('anggota.kartu', $anggota->id) }}" >Lihat Kartu</a>
-                    </td>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -41,8 +41,17 @@
             </div>
         </div>
     </div>
+@endsection
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/vendor/libs/sweetalert2/sweetalert2.css') }}" />
+@endpush
 
-    @if(Session::has('success'))
+@push('scripts')
+    <script src="{{ asset('/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
+    <script src="{{ asset('/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
+     @if(Session::has('success'))
     <script type="text/javascript">
         Swal.fire({
             icon: 'success',
@@ -52,7 +61,8 @@
             timer: 1000
         });
     </script>
-    @endif
-@endsection
+    @endif
+@endpush
+
 
 

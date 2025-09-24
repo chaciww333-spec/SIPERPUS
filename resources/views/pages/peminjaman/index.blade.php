@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'halaman peminjaman')
 @section('content')
+    <div class="row">
         <div class="col-md-12">
             <h3 class="title page">Halaman Peminjaman</h3>
             <a href="{{ route('peminjaman.create') }}" class="btn btn-primary mb-3"><span
@@ -57,6 +58,7 @@
                 </table>
             </div>
         </div>
+    </div>
         <form id="form-delete" action="" method="POST" class="d-none">
         @csrf
         @method('DELETE')

@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-Route::get('/', function(){
-    return redirect('/login');
+
+Route::get('/', function () {
+    return view('welcome');
 });
+
 Route::get('/anggota', [App\Http\Controllers\FormAnggotaController::class, 'index'])->name('anggota.index');
 Route::get('/anggota/create', [App\Http\Controllers\FormAnggotaController::class, 'create'])->name('anggota.create');
 Route::post('/anggota/store', [App\Http\Controllers\FormAnggotaController::class, 'store'])->name('anggota.store');
@@ -25,5 +27,5 @@ Route::group([
     Route::get('/ubah-profil', [App\Http\Controllers\ProfilController::class, 'index'])->name('profil.index');
     Route::post('/ubah-profil', [App\http\Controllers\ProfilController::class, 'update'])->name('profil.update');
     Route::resource('/peminjaman', App\Http\Controllers\PeminjamanController::class)->only('index', 'create', 'store', 'destroy');
-    Route::resource('pengembalian', App\Http\Controllers\PengembalianController::class)->only('index', 'create', 'store');
+    Route::resource('pengembalian', App\Http\Controllers\PengembalianController::class)->only('index', 'create', 'store', 'destroy');
 });

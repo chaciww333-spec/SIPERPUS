@@ -44,4 +44,10 @@ class PengembalianController extends Controller
          ]);
          return redirect()->route('pengembalian.index')->with('success', 'Buku berhasil dikembalikan');
     }
+     public function destroy(string $id)
+    {
+        $penembalian = Pengembalian::findOrFail($id);
+        $pengembalian->delete();
+        return redirect()->route('pengembalian.index')->with('success', 'Data kategori berhasil dihapus');
+    }
 }

@@ -3,10 +3,32 @@
 @section('title', 'Form Anggota')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
-            <h3 class="page-title">Form Anggota</h3>
-            <div class="card">
+<head>
+    <style>
+         body {
+            background: url("{{ asset('/storage/images/welcome%20siperpus.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #000;
+        }
+        .btn-simpan {
+            display: inline-block;
+            padding: 9px 17px;
+            background: #e83e8c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; 
+padding-top: 20px; padding-bottom: 20px;">
+        <div class="col-md-6 col-lg-5">
+           <div class="card" style="background-color:rgba(255, 255, 255, 0.85); border: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0. 1);">
+            <h3 class="text-center mb-0">Form Anggota</h3>
                 <div class="card-body">
                     <form action="{{ route('anggota.store') }}" method="POST">
                         @csrf
@@ -84,7 +106,7 @@
                         </div>
 
                         <div class="flex">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn-simpan">
                                 <span class="ti ti-send me-1"></span>
                                 Simpan
                             </button>
@@ -95,7 +117,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
-    </div>
+</div>
+</div>
 @endsection

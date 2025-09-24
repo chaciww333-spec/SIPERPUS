@@ -47,10 +47,11 @@
     <script src="{{ asset('/js/config.js') }}"></script>
 
     <style>
-         body {
-            background-color: #FBC5C5;
-            color: #000000;
-        }
+        body {
+            background: url("{{ asset('/storage/images/welcome%20siperpus.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+        }
+
     </style>
 </head>
 
@@ -60,7 +61,7 @@
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner py-6">
 
-                <div class="card">
+               <div class="card" style="background-color:rgba(255, 255, 255, 0.85); border: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0. 1);">
                     <div class="card-body">
 
                         <div class="app-brand justify-content-center mb-6">
