@@ -46,7 +46,7 @@ class PengembalianController extends Controller
     }
      public function destroy(string $id)
     {
-        $penembalian = Pengembalian::findOrFail($id);
+        $pengembalian = Pengembalian::findOrFail($id);
         $pengembalian->delete();
         return redirect()->route('pengembalian.index')->with('success', 'Data kategori berhasil dihapus');
     }

@@ -47,17 +47,17 @@
 
     <style>
         body {
-            background-color: #FBC5C5;
+            background-color: #F5F5F5;
             color: #000000;
         }
 
         .navbar {
-            background-color: #FFE1E1 !important;
+            background-color: #FFC1CC !important;
         }
 
         .sidebar,
         .layout-menu {
-            background-color: #FBC5C5 !important;
+            background-color: #FFC1CC !important;
         }
 
         a,
@@ -74,6 +74,18 @@
             color:#000000;
             width: 100%;
 
+        }
+        .bg-buku{
+            background-color: #F8BBD0
+        }
+        .bg-anggota{
+            background-color: #CE93D8
+        }
+        .bg-kategori{
+            background-color: #FFCCBC
+        }
+        .bg-pustakawan{
+            background-color: #F48FB1
         }
     </style>
 </head>

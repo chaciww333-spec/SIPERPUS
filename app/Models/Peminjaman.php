@@ -30,4 +30,9 @@ class Peminjaman extends Model
     {
         return $this->hasOne(Pengembalian::class);
     }
+    public function details()
+    {
+        return $this->hasMany(PeminjamanDetail::class, 'peminjaman_id');
+    }
+
 }
