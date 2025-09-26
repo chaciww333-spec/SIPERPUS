@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <h3 class="title page">Daftar Anggota</h3>
-            <a href="{{ route('anggota.create') }}" class="btn btn-primary mb-3"><span class="ti ti-plus me-1"></span>Tambah</a>
+            <a href="{{ route('anggota.create') }}" class="btn mb-3" style="background-color:#e83e8c; color:white;"><span class="ti ti-plus me-1"></span>Tambah</a>
             <div class="card card-body">
                 <table class="table table-striped dataTable" style="background-color:FFE1E1 ">
                     <thead>

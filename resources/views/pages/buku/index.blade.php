@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-wrapper mx-auto  mt-4" >
         <h3 class="mb-4">Daftar Buku</h3>
-    <a href="{{ route('buku.create') }}" class="btn btn-primary mb-3"><span
+    <a href="{{ route('buku.create') }}" class="btn mb-3" style="background-color:#e83e8c; color:white;"><span
                     class="ti ti-plus me-1"></span>Tambah</a>
                     <div class="container">
     <h3 class="mb-4">Daftar Buku</h3>

@@ -1,56 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Kartu Anggota</title>
     <style>
-         body {
-            background-color: #FBC5C5; /* background halaman pink muda */
-            font-family: Arial, sans-serif;
-        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url("{{ asset('/storage/images/welcome%20siperpus.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+        }
         .card {
-            width: 350px;
-            height: 200px;
-            border: 2px solid #cc0066;
-            border-radius: 10px;
-            padding: 15px;
-            font-family: Arial, sans-serif;
-            margin: 30px auto;
-            background-color: #FFE1E1;
-        }
-        .title {
+            width: 400px;
+            background: linear-gradient(135deg,  #FFC1CC ); 
+            border-radius: 15px;
+            color: #000000;
+            padding: 20px;
             text-align: center;
-            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        .card h2 {
+            margin: 0;
             margin-bottom: 15px;
-            font-size: 16px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
-        .info p { margin: 5px 0; }
+        .info {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
         .print-btn {
-            display: block;
-            width: 120px;
-            margin: 15px auto;
-            text-align: center;
-            background: #FF66A3 ;
-            color: white;
-            padding: 8px;
-            border-radius: 5px;
-            text-decoration: none;
+            background: white;
+            color: #db2777;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
         }
-        .print-btn:hover { background: #FF66A3 ; }
+        .print-btn:hover {
+            background: #f3f4f6;
+        }
+           .foto {
+            width: 80px;
+            height: 100px;
+            border: 2px solid #fff;
+            margin-right: 15px;
+            float: left;
+        }
+        .header-kartu{
+            display: flex;
+            align-items: center;  
+            justify-content: center; 
+            gap: 10px;
+        }
+        .header-kartu h2 {
+             margin: 0; 
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <div class="title">KARTU ANGGOTA PERPUSTAKAAN</div>
+        <div class="header-kartu">
+        <span class="app-brand-logo demo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64 " fill="none">
+                    <path d="M12 8H52V56H12C9.79 56 8 54.21 8 52V12C8 9.79 9.79 8 12 8Z" fill="#E75480"/>
+                    <path d="M52 8H44V56H52C54.21 56 56 54.21 56 52V12C56 9.79 54.21 8 52 8Z" fill="#d64572"/>
+                    <path d="M16 16H40V20H16V16Z" fill="white"/>
+                    <path d="M16 24H36V28H16V24Z" fill="white"/>
+                    <path d="M16 32H32V36H16V32Z" fill="white"/>
+                </svg>
+            </span>
+             <h2>KARTU ANGGOTA SIPERPUS</h2>
+
+        </div>
+       
         <div class="info">
-           <p><b>Nama:</b> {{ $anggota->nama }}</p>
+             <img src="{{ $foto }}" class="foto">
             <p><b>Nis:</b> {{ $anggota->nis }}</p>
+            <p><b>Nama:</b> {{ $anggota->nama }}</p>
             <p><b>Kelas:</b> {{ $anggota->kelas }}</p>
             <p><b>Jenis Kelamin:</b> {{ $anggota->jenis_kelamin }}</p>
-            <p><b>Nomor Telepon:</b> {{ $anggota->nomor_telepon }}</p>
+            <p><b>No Telepon:</b> {{ $anggota->nomor_telepon }}</p>
             <p><b>Tanggal Bergabung:</b> {{ $anggota->tanggal_bergabung }}</p>
         </div>
-    </div>
 
-    <a href="javascript:window.print()" class="print-btn">Cetak Kartu</a>
+       
+
+        <button class="print-btn" onclick="window.print()">Cetak Kartu</button>
+    </div>
 </body>
 </html>
+ 

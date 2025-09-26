@@ -6,6 +6,17 @@ use Illuminate\Http\Request;
 
 class FormAnggotaController extends Controller
 {
+    public function showCard($id)
+    {
+        $anggota = Anggota::findOrFail($id);
+
+        // Tentukan foto berdasarkan jenis kelamin
+        $foto = $anggota->jenis_kelamin === 'Laki-Laki' 
+            ? asset('/storage/images/man.jpg') 
+            : asset('/storage/images/woman.jpg');
+
+        return view('pages.anggota.kartu', compact('anggota','foto'));
+    }
     public function kartu($id)
     {
         $anggota = Anggota::findOrFail($id);

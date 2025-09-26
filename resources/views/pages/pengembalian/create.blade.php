@@ -32,7 +32,7 @@
         </div>
 
    
-                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <button type="submit" class="btn" style="background-color:#e83e8c; color:white;">Simpan</button>
                     </form>
                 </div>
             </div>

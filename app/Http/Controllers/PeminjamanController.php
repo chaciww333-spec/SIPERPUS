@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Peminjaman;
-use App\Models\Buku;
 use App\Models\Anggota;
+use App\Models\Buku;
+use App\Models\Peminjaman;
+use Illuminate\Http\Request;
+
 class PeminjamanController extends Controller
 {
     /**
@@ -14,6 +15,7 @@ class PeminjamanController extends Controller
     public function index()
     {
         $peminjaman = Peminjaman::with('pengembalian', 'anggota', 'buku')->get();
+
         return view('pages.peminjaman.index', compact('peminjaman'));
     }
 
@@ -24,6 +26,7 @@ class PeminjamanController extends Controller
     {
         $anggota = Anggota::all();
         $buku = Buku::all();
+
         return view('pages.peminjaman.create', compact('anggota', 'buku'));
     }
 
@@ -38,20 +41,22 @@ class PeminjamanController extends Controller
             'tgl_pinjam' => 'required',
             'tgl_jatuh_tempo' => 'required',
         ]);
-         Peminjaman::create([
+        Peminjaman::create([
             'anggota_id' => $request->anggota_id,
             'buku_id' => $request->buku_id,
-            'tgl_pinjam' => now(),
-            'tgl_jatuh_tempo' => now()->addDays(7),
+            'tgl_pinjam' => $request->tgl_pinjam,
+            'tgl_jatuh_tempo' => $request->tgl_jatuh_tempo,
             'status' => 'Dipinjam',
-         ]);
-         return redirect()->route('peminjaman.index')->with('succes', 'Buku berhasil dipinjam');
+        ]);
+
+        return redirect()->route('peminjaman.index')->with('succes', 'Buku berhasil dipinjam');
     }
-     public function destroy(string $id)
+
+    public function destroy(string $id)
     {
         $peminjaman = Peminjaman::findOrFail($id);
         $peminjaman->delete();
+
         return redirect()->route('peminjaman.index')->with('success', 'Data kategori berhasil dihapus');
     }
-
 }

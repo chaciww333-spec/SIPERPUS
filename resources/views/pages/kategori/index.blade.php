@@ -3,7 +3,7 @@
 @section('content')
         <div class="col-md-12">
             <h3 class="title page">Halaman Kategori</h3>
-            <a href="{{ route('kategori.create') }}" class="btn btn-primary mb-3"><span
+            <a href="{{ route('kategori.create') }}" class="btn mb-3" style="background-color:#e83e8c; color:white;"><span
                     class="ti ti-plus me-1"></span>Tambah</a>
             <div class="card card-body">
                 <table class="table table-striped dataTable">

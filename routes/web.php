@@ -6,10 +6,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('/anggota', [App\Http\Controllers\FormAnggotaController::class, 'index'])->name('anggota.index');
 Route::get('/anggota/create', [App\Http\Controllers\FormAnggotaController::class, 'create'])->name('anggota.create');
 Route::post('/anggota/store', [App\Http\Controllers\FormAnggotaController::class, 'store'])->name('anggota.store');
-Route::get('/anggota/{id}/kartu', [App\Http\Controllers\FormAnggotaController::class, 'kartu'])->name('anggota.kartu');
+Route::get('/anggota/{id}/kartu', [App\Http\Controllers\FormAnggotaController::class, 'showCard'])->name('anggota.kartu');
 
 
 Auth::routes();

@@ -6,7 +6,7 @@
             <h3 class="title page">
             <i class="menu-icon tf-icons ti ti-users"></i>
                 Halaman Admin</h3>
-            <a href="{{ route('admin.create') }}" class="btn btn-primary mb-3"><span class="ti ti-plus me-1"></span>Tambah</a>
+            <a href="{{ route('admin.create') }}" class="btn mb-3" style="background-color:#e83e8c; color:white;"><span class="ti ti-plus me-1"></span>Tambah</a>
             <div class="card card-body">
                 <table class="table table-striped dataTable">
                     <thead>

@@ -51,6 +51,21 @@
             background: url("{{ asset('/storage/images/welcome%20siperpus.jpg') }}") no-repeat center center fixed;
             background-size: cover;
         }
+      .btn-login{
+            display: inline-block;
+            padding: 12px;
+            background: #e83e8c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .app-brand-logo svg{
+            width:80px !important;
+            height:80px !important;
+        }
 
     </style>
 </head>
@@ -119,7 +134,7 @@
                                 </div>
                             </div>
                             <div class="mb-6">
-                                <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
+                                <button class="btn btn-login d-grid w-100" type="submit">Login</button>
                             </div>
                         </form>
                     </div>
