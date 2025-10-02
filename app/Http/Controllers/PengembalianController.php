@@ -34,24 +34,24 @@ class PengembalianController extends Controller
 {
    $request->validate([
             'peminjaman_id' => 'required',
-            'tanggal_pengembalian' => 'required|date',
+            'tgl_pengembalian' => 'required|date',
         ]);
 
         $peminjaman = Peminjaman::findOrFail($request->peminjaman_id);
 
-        $jatuhTempo = Carbon::parse($peminjaman->tanggal_jatuh_tempo);
-        $pengembalian = Carbon::parse($request->tanggal_pengembalian);
-
+        $jatuhTempo = Carbon::parse($peminjaman->tgl_jatuh_tempo);
+        $tglPengembalian = Carbon::parse($request->tgl_pengembalian);
+        
+        $tarifDenda = 1000;
         $denda = 0;
-        if ($pengembalian->gt($jatuhTempo)) {
-            $selisihHari = $jatuhTempo->diffInDays($pengembalian);
-            $tarifDendaPerHari = 1000; // contoh tarif
-            $denda = $selisihHari * $tarifDendaPerHari;
+        if ($tglPengembalian->gt($jatuhTempo)) {
+            $selisihHari = $jatuhTempo->diffInDays($tglPengembalian);
+            $denda = $selisihHari * $tarifDenda;
         }
 
         Pengembalian::create([
             'peminjaman_id' => $request->peminjaman_id,
-            'tanggal_pengembalian' => $request->tanggal_pengembalian,
+            'tgl_pengembalian' => $request->tgl_pengembalian,
             'denda' => $denda,
         ]);
 

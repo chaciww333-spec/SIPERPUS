@@ -13,8 +13,8 @@
                             <th>No</th>
                             <th>Anggota</th>
                             <th>Buku</th>
-                            <th>Tannggal Peminjaman</th>
-                            <th>Tannggal Jatuh Tempo</th>
+                            <th>Tanggal Peminjaman</th>
+                            <th>Tanggal Jatuh Tempo</th>
                             <th>Tanggal Pengembalian</th>
                             <th>Denda</th>
                         </tr>
@@ -25,10 +25,10 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $p->peminjaman->anggota->nama }}</td>
                     <td>{{ $p->peminjaman->buku->judul }}</td>
-                    <td>{{ $p->peminjaman->tgl_pinjam }}</td>
-                    <td>{{ $p->peminjaman->tgl_jatuh_tempo }}</td>
-                    <td>{{ $p->tgl_pengembalian }}</td>
-                    <td>{{ $p->denda ?? '-' }}</td>
+                    <td>{{ \Carbon\Carbon::parse($p->peminjaman->tgl_pinjam)->format('d-m-Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($p->peminjaman->tgl_jatuh_tempo)->format('d-m-Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($p->tgl_pengembalian)->format('d-m-Y') }}</td>
+                    <td>{{ $p->denda }}</td>
                      <td>
                         <a href="javascript:;" class="btn btn-sm"
                                         onclick="actionDelete('{{ route('pengembalian.destroy', $p->id) }}')">

@@ -33,8 +33,8 @@
                         @endif
                     </td>
                     <td>{{ $p->buku->judul ?? '-' }}</td>
-                    <td>{{ $p->tgl_pinjam }}</td>
-                    <td>{{ $p->tgl_jatuh_tempo }}</td>
+                    <td>{{ \Carbon\Carbon::parse($p->tgl_pinjam)->format('d-m-Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($p->tgl_jatuh_tempo)->format('d-m-Y') }}</td>
                     <td>
                         @if($p->pengembalian)
                             <span class="badge bg-success">Sudah Dikembalikan</span>
