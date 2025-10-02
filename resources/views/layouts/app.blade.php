@@ -87,6 +87,10 @@
         .bg-pustakawan{
             background-color: #F48FB1
         }
+        .Chart {
+            max-width: 300px;
+            max-height: 300px;
+        }
     </style>
 </head>
 

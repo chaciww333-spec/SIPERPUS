@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pengembalian;
 use App\Models\Peminjaman;
+use Carbon\Carbon;
 class PengembalianController extends Controller
 {
     /**
@@ -21,28 +22,40 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        $peminjaman = Peminjaman::whereDoesntHave('pengembalian')->with('anggota', 'buku')->get();
+       $peminjaman = Peminjaman::all();
         return view('pages.pengembalian.create', compact('peminjaman'));
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
+   public function store(Request $request)
+{
+   $request->validate([
             'peminjaman_id' => 'required',
-            'tgl_pengembalian' => 'required|date',
+            'tanggal_pengembalian' => 'required|date',
         ]);
+
+        $peminjaman = Peminjaman::findOrFail($request->peminjaman_id);
+
+        $jatuhTempo = Carbon::parse($peminjaman->tanggal_jatuh_tempo);
+        $pengembalian = Carbon::parse($request->tanggal_pengembalian);
+
+        $denda = 0;
+        if ($pengembalian->gt($jatuhTempo)) {
+            $selisihHari = $jatuhTempo->diffInDays($pengembalian);
+            $tarifDendaPerHari = 1000; // contoh tarif
+            $denda = $selisihHari * $tarifDendaPerHari;
+        }
+
         Pengembalian::create([
             'peminjaman_id' => $request->peminjaman_id,
-            'tgl_pengembalian' => $request->tgl_pengembalian,
-            'denda' => $request->denda ?? 0,
+            'tanggal_pengembalian' => $request->tanggal_pengembalian,
+            'denda' => $denda,
         ]);
-         Peminjaman::where('id', $request->peminjaman_id)->update([
-            'status' => 'Dikembalikan'
-         ]);
-         return redirect()->route('pengembalian.index')->with('success', 'Buku berhasil dikembalikan');
+
+        return redirect()->route('pengembalian.index')->with('success', 'Pengembalian berhasil ditambahkan!');
     }
      public function destroy(string $id)
     {

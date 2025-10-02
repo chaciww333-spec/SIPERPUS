@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-wrapper mx-auto  mt-4" >
-        <h3 class="mb-4">Daftar Buku</h3>
+    <div class="d-flex align-items-center mb-4">
+  <i class="fas fa-book fa-3x" style="font-size: 2rem; color: #e83e8c; margin-right: 10px;"></i>
+  <h2 class="mb-0">Daftar Buku</h2>
+</div>
     <a href="{{ route('buku.create') }}" class="btn mb-3" style="background-color:#e83e8c; color:white;"><span
                     class="ti ti-plus me-1"></span>Tambah</a>
                     <div class="container">
-    <h3 class="mb-4">Daftar Buku</h3>
 
     {{-- Form Search --}}
     <form method="GET" action="{{ route('buku.index') }}" class="mb-4">
@@ -19,7 +20,7 @@
 
         <div class="row">
             @foreach ($buku as $buku)
-                <div class="col-md-3 mb-4">
+                <div class="col-6 col-md-3 col-lg-3 mb-3">
                     <div class="card h-100">
                         {{-- Cover buku --}}
                         <img src="{{ asset('storage/images/' . $buku->cover) }}" class="card-img-top" alt="{{ $buku->judul }}"

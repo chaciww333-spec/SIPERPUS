@@ -13,7 +13,6 @@ Route::get('/anggota/create', [App\Http\Controllers\FormAnggotaController::class
 Route::post('/anggota/store', [App\Http\Controllers\FormAnggotaController::class, 'store'])->name('anggota.store');
 Route::get('/anggota/{id}/kartu', [App\Http\Controllers\FormAnggotaController::class, 'showCard'])->name('anggota.kartu');
 
-
 Auth::routes();
 
 
@@ -22,6 +21,7 @@ Route::group([
 ], function () {
    
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
     Route::resource('/admin', App\Http\Controllers\AdminController::class);
     Route::resource('/pustakawan', App\Http\Controllers\PustakawanController::class);
