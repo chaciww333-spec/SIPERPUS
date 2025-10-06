@@ -1,19 +1,29 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/'); 
+});
 
 
 Route::get('/anggota', [App\Http\Controllers\FormAnggotaController::class, 'index'])->name('anggota.index');
 Route::get('/anggota/create', [App\Http\Controllers\FormAnggotaController::class, 'create'])->name('anggota.create');
 Route::post('/anggota/store', [App\Http\Controllers\FormAnggotaController::class, 'store'])->name('anggota.store');
 Route::get('/anggota/{id}/kartu', [App\Http\Controllers\FormAnggotaController::class, 'showCard'])->name('anggota.kartu');
-
+Route::get('/anggota//dashboard', [App\Http\Controllers\FormAnggotaController::class, 'dashboard'])->name('anggota.dashboard');
+Route::get('/anggota/buku', [App\Http\Controllers\FormAnggotaController::class, 'buku'])->name('anggota.buku');
+Route::get('/anggota/buku', [App\Http\Controllers\FormAnggotaController::class, 'daftarBuku'])->name('anggota.buku');
 Auth::routes();
+
 
 
 Route::group([
