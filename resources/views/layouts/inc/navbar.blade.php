@@ -23,11 +23,13 @@
              <li class="nav-item navbar-dropdown dropdown-user dropdown">
                  <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);"
                      data-bs-toggle="dropdown">
-                     <div class="d-flex align-items-center">
-                         <img src="{{ asset('/img/avatars/8.png') }}" alt class="rounded-circle" width="32" height="32" />
-                          <span>{{ Auth::user()->name ?? 'Anggota'}}</span>
-                     </div>
-
+                    <div class="d-flex align-items-center">
+    <div class="avatar position-relative">
+        <img src="{{ asset('/img/avatars/8.png') }}" alt class="rounded-circle" width="32" height="32" />
+        <span class="status-dot bg-success"></span>
+    </div>
+    <span class="ms-2 fw-bold">{{ Auth::user()->name ?? 'Anggota'}}</span>
+</div>
                  </a>
                  <ul class="dropdown-menu dropdown-menu-end">
                      <li>

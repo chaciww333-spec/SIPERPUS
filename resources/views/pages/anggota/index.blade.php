@@ -29,7 +29,7 @@
                                 <td>{{ $anggota->kelas }}</td>
                                 <td>{{ $anggota->jenis_kelamin }}</td>
                                 <td>{{ $anggota->nomor_telepon }}</td>
-                                <td>{{ $anggota->tanggal_bergabung }}</td>
+                                <td>{{ \Carbon\Carbon::parse($anggota->tanggal_bergabung)->format('d-m-Y') }}</td>
                                 <td>
                         <a href="{{ route('anggota.kartu', $anggota->id) }}" >Lihat Kartu</a>
                                 </td>

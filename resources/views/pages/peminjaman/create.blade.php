@@ -45,7 +45,10 @@
                                 <label for="tgl_jatuh_tempo" class="form-label">Tanggal Jatuh Tempo</label>
                                 <input type="date" name="tgl_jatuh_tempo" id="tgl_jatuh_tempo" class="form-control" required>
                             </div>
-                            <button type="submit" class="btn" style="background-color:#e83e8c; color:white;">Simpan</button>
+                            <button type="submit" class="btn" style="background-color:#e83e8c; color:white;">
+                                <span class="ti ti-send me-1"></span>
+                                Simpan
+                            </button>
         <script>
         document.getElementById('buku_id').addEventListener('change', function() {
             let selectedOption = this.options[this.selectedIndex];

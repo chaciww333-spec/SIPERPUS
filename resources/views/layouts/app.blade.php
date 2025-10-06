@@ -54,6 +54,24 @@
         .navbar {
             background-color: #FFC1CC !important;
         }
+        avatar {
+        position: relative;
+        display: inline-block;
+        }
+
+        .status-dot {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 9px;
+        height: 9px;
+        background-color: #28a745; /* hijau */
+        border: 2px solid #fff;
+        border-radius: 50% !important;
+        display: inline-block;
+        }
+
+        
 
         .sidebar,
         .layout-menu {
@@ -91,6 +109,7 @@
             max-width: 300px;
             max-height: 300px;
         }
+        
     </style>
 </head>
 
@@ -108,6 +127,7 @@
                 <!-- Navbar -->
 
                 @include('layouts.inc.navbar')
+                
 
                 <!-- / Navbar -->
 

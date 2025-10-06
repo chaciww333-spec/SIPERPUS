@@ -21,7 +21,10 @@
                                 <input type="date" name="tgl_pengembalian" id="tgl_pengembalian" 
                                     class="form-control" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn" style="background-color:#e83e8c; color:white;">
+                                <span class="ti ti-send me-1"></span>
+                                Simpan
+                            </button>
                         </form>
                 </div>
             </div>

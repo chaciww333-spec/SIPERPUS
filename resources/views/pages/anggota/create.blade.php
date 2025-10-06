@@ -106,7 +106,7 @@ padding-top: 20px; padding-bottom: 20px;">
                         </div>
 
                         <div class="flex">
-                            <button type="submit" class="btn-simpan">
+                            <button type="submit" class="btn" style="background-color:#e83e8c; color:white;">
                                 <span class="ti ti-send me-1"></span>
                                 Simpan
                             </button>

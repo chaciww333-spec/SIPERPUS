@@ -14,6 +14,7 @@
             font-family: 'Poppins', sans-serif;
         }
         .card {
+            border: 2px solid #000;
             width: 400px;
             background: linear-gradient(135deg,  #FFC1CC ); 
             border-radius: 15px;
@@ -30,6 +31,8 @@
             letter-spacing: 1px;
         }
         .info {
+            display: flex;
+            align-items: flex-start;
             text-align: left;
             background: rgba(255, 255, 255, 0.15);
             padding: 12px;
@@ -55,20 +58,62 @@
         }
            .foto {
             width: 80px;
-            height: 100px;
+            height: 120px;
             border: 2px solid #fff;
             margin-right: 15px;
             float: left;
+        }
+        
+        .data {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            flex: 1;
         }
         .header-kartu{
             display: flex;
             align-items: center;  
             justify-content: center; 
             gap: 10px;
+            margin-bottom: 15px;
         }
         .header-kartu h2 {
              margin: 0; 
+             font-size: 18px;
+             font-weight: bold;
+             line-height: 1;
         }
+       @media print {
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            height: 100vh;
+            background: none !important;
+        }
+
+        .card {
+            border: 2px solid #000;
+            border-radius: 10px;
+            width: 9cm;   
+            height: 6cm;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            page-break-after: avoid;
+        }
+
+        .print-btn {
+            display: none !important;
+          }
+
+        }
+        
     </style>
 </head>
 <body>
@@ -88,14 +133,20 @@
         </div>
        
         <div class="info">
+            <div class="foto-area">
              <img src="{{ $foto }}" class="foto">
+             
+            </div>
+             <div class="data">
             <p><b>Nis:</b> {{ $anggota->nis }}</p>
             <p><b>Nama:</b> {{ $anggota->nama }}</p>
             <p><b>Kelas:</b> {{ $anggota->kelas }}</p>
             <p><b>Jenis Kelamin:</b> {{ $anggota->jenis_kelamin }}</p>
             <p><b>No Telepon:</b> {{ $anggota->nomor_telepon }}</p>
-            <p><b>Tanggal Bergabung:</b> {{ $anggota->tanggal_bergabung }}</p>
+            <p><b>Tanggal Bergabung:</b> {{ \Carbon\Carbon::parse($anggota->tanggal_bergabung)->format('d-m-Y') }}</p>
+             </div>
         </div>
+        
 
        
 
