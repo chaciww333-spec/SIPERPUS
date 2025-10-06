@@ -1,123 +1,91 @@
-@extends('layouts.guest')
-
-@section('title', 'Form Anggota')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Anggota | SIPERPUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-cover bg-center font-[Poppins]"
+      style="background-image: url('/storage/images/welcome%20siperpus.jpg');">
+    <div class="fixed inset-0 w-full h-full bg-pink-200/40 backdrop-blur-smz-0"></div>
+
+    <div class="relative z-10 flex items-center justify-center min-h-screen px-6">
+        <div class="w-full max-w-2xl bg-white/80 backdrop-blur-xl shadow-2xl rounded-2xl border border-pink-300 p-8 animate-fadeIn">
+  
+            <h2 class="text-3xl font-bold text-center text-pink-600 mb-6">📋 Form Pendaftaran Anggota</h2>
+
+            <form method="POST" action="{{ route('anggota.store') }}">
+                @csrf
+
+                <div class="mb-4">
+                    <label for="nis" class="block text-gray-700 font-semibold mb-2">NIS</label>
+                    <input id="nis" type="text" name="nis" required
+                           class="w-full px-4 py-2 border border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-400 focus:outline-none">
+                </div>
+
+                <div class="mb-4">
+                    <label for="nama" class="block text-gray-700 font-semibold mb-2">Nama Lengkap</label>
+                    <input id="nama" type="text" name="nama" required
+                           class="w-full px-4 py-2 border border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-400 focus:outline-none">
+                </div>
+
+                <div class="mb-4">
+                    <label for="kelas" class="block text-gray-700 font-semibold mb-2">Kelas</label>
+                    <input id="kelas" type="text" name="kelas" required
+                           class="w-full px-4 py-2 border border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-400 focus:outline-none">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">Jenis Kelamin</label>
+                    <div class="flex gap-6">
+                        <label class="flex items-center">
+                            <input type="radio" name="jenis_kelamin" value="L" class="text-pink-500 focus:ring-pink-400">
+                            <span class="ml-2 text-gray-700">Laki-laki</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="jenis_kelamin" value="P" class="text-pink-500 focus:ring-pink-400">
+                            <span class="ml-2 text-gray-700">Perempuan</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="nomor_telepon" class="block text-gray-700 font-semibold mb-2">Nomor Telepon</label>
+                    <input id="nomor_telepon" type="text" name="nomor_telepon" required
+                           class="w-full px-4 py-2 border border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-400 focus:outline-none"
+                           value="{{ old('nomor_telepon') }}">
+                </div>
+
+                <div class="mb-4">
+                    <label for="tanggal_bergabung" class="block text-gray-700 font-semibold mb-2">Tanggal Bergabung</label>
+                    <input id="tanggal_bergabung" type="date" name="tanggal_bergabung"
+                           class="w-full px-4 py-2 border border-pink-300 rounded-lg focus:ring-2 focus:ring-pink-400 focus:outline-none">
+                </div>
+
+                <div class="flex justify-center gap-4 mt-6">
+                    <button type="submit"
+                            class="px-6 py-3 rounded-lg bg-pink-500 text-white font-semibold shadow-lg hover:bg-pink-600 hover:scale-105 transition duration-300">
+                        Simpan
+                    </button>
+                    <a href="{{ route('anggota.index') }}"
+                       class="px-6 py-3 rounded-lg bg-gray-300 text-gray-700 font-semibold shadow hover:bg-gray-400 transition duration-300">
+                        Batal
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <style>
-         body {
-            background: url("{{ asset('/storage/images/welcome%20siperpus.jpg') }}") no-repeat center center fixed;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-            color: #000;
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
         }
-        .btn-simpan {
-            display: inline-block;
-            padding: 9px 17px;
-            background: #e83e8c;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: 0.3s;
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
         }
     </style>
-</head>
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; 
-padding-top: 20px; padding-bottom: 20px;">
-        <div class="col-md-6 col-lg-5">
-           <div class="card" style="background-color:rgba(255, 255, 255, 0.85); border: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0. 1);">
-            <h3 class="text-center mb-0">Form Anggota</h3>
-                <div class="card-body">
-                    <form action="{{ route('anggota.store') }}" method="POST">
-                        @csrf
-                        <div class="form-group mb-3">
-                            <label for="nis" class="form-label">Nis</label>
-                            <input type="text" class="form-control @error('nis') is-invalid @enderror" id="nis"
-                                name="nis" value="{{ old('nis') }}" />
-                            @error('nis')
-                                <div class="invalid-feedback d-block">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="nama" class="form-control @error('nama') is-invalid @enderror" id="nama"
-                                name="nama" value="{{ old('nama') }}" />
-                            @error('nama')
-                                <div class="invalid-feedback d-block">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="kelas" class="form-label">Kelas</label>
-                            <input type="kelas" class="form-control @error('kelas') is-invalid @enderror"
-                                id="kelas" name="kelas" />
-
-                            @error('kelas')
-                                <div class="invalid-feedback d-block">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="jenis_kelami">Jenis Kelamin</label>
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input"
-                                 name="jenis_kelamin" id="jenis_kelamin_l" value="L">
-                                 <label for="jenis_kelamin_l" class="form-check-label">Laki-laki</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input"
-                                 name="jenis_kelamin" id="jenis_kelamin_p" value="P">
-                                 <label for="jenis_kelamin_p" class="form-check-label">Perempuan</label>
-                            </div>
-                            @error('jenis_kelamin')
-                                 <span class="text-danger">{{ $message }}</span>
-                            @enderror
-
-                        <div class="form-group mb-3">
-                            <label for="nomor_telepon" class="form-label">Nomor Telepon</label>
-                            <input type="nomor_telepon" class="form-control @error('nomor_telepon') is-invalid @enderror"
-                                id="nomor_telepon" name="nomor_telepon" />
-
-                            @error('nomor_telepon')
-                                <div class="invalid-feedback d-block">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="tanggal_bergabung" class="form-label">Tanggal Bergabung</label>
-                            <input type="date" class="form-control @error('tanggal_bergabung') is-invalid @enderror"
-                                id="kelas" name="tanggal_bergabung" />
-
-                            @error('tanggal_bergabung')
-                                <div class="invalid-feedback d-block">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="flex">
-                            <button type="submit" class="btn-simpan">
-                                <span class="ti ti-send me-1"></span>
-                                Simpan
-                            </button>
-
-                            <a href="{{ route('admin.index') }}" class="btn btn-secondary">
-                                Batal
-                            </a>
-                        </div>
-                    </form>
-                </div>
-        </div>
-</div>
-</div>
-@endsection
+</body>
+</html>
+ 

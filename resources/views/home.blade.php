@@ -1,6 +1,67 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+  /* Styling Small Box Aesthetic */
+.small-box {
+    position: relative;
+    overflow: hidden;       /* biar ikon ga keluar */
+    border-radius: 16px;    /* sudut membulat */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.small-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Ikon di dalam small-box */
+.small-box .icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 0;
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.5); /* transparan biar soft */
+    pointer-events: none;
+}
+
+/* Warna khusus */
+.bg-buku {
+    background: linear-gradient(135deg, #f8bbd0, #f48fb1);
+    color: white;
+}
+.bg-anggota {
+    background: linear-gradient(135deg, #e1bee7, #ba68c8);
+    color: white;
+}
+.bg-kategori {
+    background: linear-gradient(135deg, #f8bbd0, #ec407a);
+    color: white;
+}
+.bg-pustakawan {
+    background: linear-gradient(135deg, #d1c4e9, #9575cd);
+    color: white;
+}
+
+/* Footer link */
+.small-box-footer {
+    background: rgba(255, 255, 255, 0.2);
+    color: white !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    display: block;
+    text-align: center;
+    padding: 8px;
+    border-radius: 0 0 16px 16px;
+    transition: background 0.3s;
+}
+.small-box-footer:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+
+</style>
 <div class="container">
     <div class="row">
          <div class="col-lg-3 col-6">
@@ -61,7 +122,7 @@
     </div>
 
         <div class="col-md-6">
-            <div class="card shadow mt-4">
+            <div class="card shadow mt-4" style="border-radius: 1rem;">
                 <div class="card-body">
                     <h5 class="card-title text-center mb-4">Grafik Peminjaman Harian</h5>
                         <div style="position: relative; height:300px; width:100%;">
@@ -73,7 +134,7 @@
         </div>
 
         <div class="col-md-6">
-            <div class="card shadow mt-4">
+            <div class="card shadow mt-4"  style="border-radius: 1rem;">
                 <div class="card-body">
                     <h5 class="card-title text-center">Status Peminjaman</h5>
                     <div style="width:300px; height:300px; margin:auto;">
