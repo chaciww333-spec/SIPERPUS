@@ -22,20 +22,18 @@
             @foreach ($buku as $buku)
                 <div class="col-6 col-md-3 col-lg-3 mb-3">
                     <div class="card h-100">
-                        {{-- Cover buku --}}
+
                         <img src="{{ asset('storage/images/' . $buku->cover) }}" class="card-img-top" alt="{{ $buku->judul }}"
                             style="height: 260px; object-fit: cover;">
 
                         <div class="card-body d-flex flex-column">
-                            {{-- Judul --}}
                             <h5 class="card-title">{{ $buku->judul }}</h5>
 
-                            {{-- Detail buku --}}
                             <p class="card-text mb-1"><strong>Kategori:</strong> {{ $buku->kategori->nama }}</p>
                             <p class="card-text mb-1"><strong>Penulis:</strong> {{ $buku->penulis }}</p>
                             <p class="card-text mb-1"><strong>Penerbit:</strong> {{ $buku->penerbit }}</p>
 
-                            {{-- Tombol aksi --}}
+                            
                             <div class="mt-auto d-flex justify-content-between">
                                 <a href="{{ route('buku.edit', $buku->id) }}" class="btn btn-warning btn-sm">Edit</a>
 

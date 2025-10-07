@@ -68,7 +68,7 @@
                             class="px-6 py-3 rounded-lg bg-pink-500 text-white font-semibold shadow-lg hover:bg-pink-600 hover:scale-105 transition duration-300">
                         Simpan
                     </button>
-                    <a href="{{ route('anggota.index') }}"
+                    <a href="{{ url('/') }}"
                        class="px-6 py-3 rounded-lg bg-gray-300 text-gray-700 font-semibold shadow hover:bg-gray-400 transition duration-300">
                         Batal
                     </a>
